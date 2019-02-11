@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -std=c99
 
-all: test
+all: performance_test
 
 string_matching_naive.o: string_matching_naive.c string_matching.h 
 	$(CC) $(CFLAGS) -c string_matching_naive.c
@@ -9,11 +9,12 @@ string_matching_naive.o: string_matching_naive.c string_matching.h
 string_matching_kmp.o: string_matching_kmp.c string_matching.h
 	$(CC) $(CFLAGS) -c string_matching_kmp.c
 	
-test.o: test.c string_matching.h
-	$(CC) $(CFLAGS) -c test.c
+performance_test.o: performance_test.c string_matching.h
+	$(CC) $(CFLAGS) -c performance_test.c
+
 	
-test: string_matching_naive.o string_matching_kmp.o test.o
-	$(CC) $(CFLAGS) -o test string_matching_naive.o string_matching_kmp.o test.o
+tesi: string_matching_naive.o string_matching_kmp.o performance_test.o
+	$(CC) $(CFLAGS) -o performance_test string_matching_naive.o string_matching_kmp.o performance_test.o
 
 clean:
-	rm *.o test
+	rm *.o performance_test

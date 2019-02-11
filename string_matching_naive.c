@@ -17,7 +17,7 @@ int string_matching_naive(char *text, int N, char* pattern, int M){
 			}
 		}
 	}
-	printf("DONE!!!\n");
+	//printf("DONE!!!\n");
 	return found;
 }
 
