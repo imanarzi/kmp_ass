@@ -109,18 +109,18 @@ void performance_test(int N, int M){
     	}
 
     	printf("text='%s', pattern='%s'\n", text, pattern);
-	struct timeval start, end;
+	struct timeval start1, end1, start2, end2;
 	double tn, tk;
-	gettimeofday(&start, NULL);
+	gettimeofday(&start1, NULL);
     	int result1 = string_matching_naive(text, n, pattern, m);
-	gettimeofday(&end, NULL);
-	tn = (double)(end.tv_usec - start.tv_usec);
-	gettimeofday(&start, NULL);
-    	int result2 = string_matching_kmp(text, n, pattern, m);
-	gettimeofday(&end, NULL);
-	tk = (double)(end.tv_usec - start.tv_usec);
+	gettimeofday(&end1, NULL);
+	tn = (double)(end1.tv_usec - start1.tv_usec);
+	gettimeofday(&start2, NULL);
+	int result2 = string_matching_kmp(text, n, pattern, m);
+	gettimeofday(&end2, NULL);
+	tk = (double)(end2.tv_usec - start2.tv_usec) - tn;
     	if (result1==result2){
-      		printf("naive time: %f kmp time: %f\n", tn, tk);
+      		printf("naive time: %lf kmp time: %lf\n", tn, tk);
 		printf("OK\n");
 	}
     	else {
