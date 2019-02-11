@@ -1,9 +1,13 @@
 #include "string_matching.h"
 #include <string.h>
 int string_matching_naive(char *text, int N, char* pattern, int M){
+	//text[N] = '\0';
+	pattern[M] = '\0';
 	int found = 0;
 	for(int i = 0; i < N; i++){
 		for(int j = 0; j < M; j++){
+			if(i + j >= N)
+				break;
 			if(text[i + j] != pattern[j]){
 				break;
 			}
@@ -13,6 +17,7 @@ int string_matching_naive(char *text, int N, char* pattern, int M){
 			}
 		}
 	}
+	printf("DONE!!!\n");
 	return found;
 }
 
